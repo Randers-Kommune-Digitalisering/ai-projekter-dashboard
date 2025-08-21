@@ -57,7 +57,9 @@ def get_fase_icon(fase):
 
 allowed_teknologi = [
     "Generativ AI",
-    "Generativ AI, Chatbot"
+    "Generativ AI, Chatbot",
+    "Chatbot, Generativ AI",
+    "Videoløsning, Generativ AI"
 ]
 
 
