@@ -55,13 +55,5 @@ def get_fase_icon(fase):
     return icons.get(fase, "🔄")
 
 
-allowed_teknologi = [
-    "Generativ AI",
-    "Generativ AI, Chatbot",
-    "Chatbot, Generativ AI",
-    "Videoløsning, Generativ AI"
-]
-
-
 def filter_by_allowed_teknologi(df):
     return df[df["Teknologi"].str.contains("Generativ AI", case=False, na=False)]
