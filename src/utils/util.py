@@ -64,4 +64,4 @@ allowed_teknologi = [
 
 
 def filter_by_allowed_teknologi(df):
-    return df[df["Teknologi"].isin(allowed_teknologi)]
+    return df[df["Teknologi"].str.contains("Generativ AI", case=False, na=False)]
