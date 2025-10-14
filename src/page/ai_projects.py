@@ -3,12 +3,13 @@ import streamlit_antd_components as sac
 import pandas as pd
 from utils.database_connection import get_sharepoint_db
 from utils.util import filter_forvaltning_options, get_fase_icon, starts_with_letter, map_projekt_fase, map_forvaltning_forkortelse, filter_by_allowed_teknologi
+from utils.markdown_elements import get_custom_css
 
 db_client = get_sharepoint_db()
 
 
 def get_ai_projects_overview():
-
+    st.markdown(get_custom_css(), unsafe_allow_html=True)
     col_1 = st.columns([1])[0]
 
     with col_1:
