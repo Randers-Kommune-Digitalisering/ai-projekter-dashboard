@@ -72,8 +72,8 @@ def get_ai_projects_overview():
                 data = data.copy()
                 data["Fase_mapped"] = data["Fase"].apply(map_projekt_fase)
                 fase_options = sorted([f for f in data["Fase_mapped"].dropna().unique().tolist() if f != "Idé"])
-                custom_fase_options = ["Alle (undt. drift)", "Alle"] + fase_options
-                # Sæt "Alle (undt. drift)" som default
+                custom_fase_options = ["Alle (÷ idriftsat)", "Alle"] + fase_options
+                # Sæt "Alle (÷ idriftsat)" som default
                 fase_filter = st.selectbox(
                     "Vælg Fase",
                     options=custom_fase_options,
@@ -89,7 +89,7 @@ def get_ai_projects_overview():
             if forvaltning_filter != "Alle":
                 filtered_data = filtered_data[filtered_data["Forvaltning"] == forvaltning_filter]
 
-            if fase_filter == "Alle (undt. drift)":
+            if fase_filter == "Alle (÷ idriftsat)":
                 filtered_data = filtered_data[filtered_data["Fase_mapped"] != "I drift"]
             elif fase_filter != "Alle":
                 filtered_data = filtered_data[filtered_data["Fase_mapped"] == fase_filter]
