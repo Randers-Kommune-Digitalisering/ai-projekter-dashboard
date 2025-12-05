@@ -56,4 +56,4 @@ def get_fase_icon(fase):
 
 
 def filter_by_allowed_teknologi(df):
-    return df[df["Teknologi"].str.contains("Generativ AI", case=False, na=False)]
+    return df[df["Teknologi"].str.contains("Kunstig intelligens", case=False, na=False)]
