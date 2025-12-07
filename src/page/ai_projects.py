@@ -148,26 +148,27 @@ def get_ai_projects_overview():
             else:
                 kontakt_html = kontakt_name
 
-            flex_content = f'<span><strong>👤</strong> {kontakt_html}</span>'
+            def print_flex_item(row, content):
+                return f'<div class="projects-flex-item"><div>{row}</div><div>{content}</div></div>'
+
+            flex_content = print_flex_item("👤 Kontaktperson", kontakt_html)
             if row["Forvaltning"]:
                 forvaltning_forkortet = map_forvaltning_forkortelse(row["Forvaltning"])
-                flex_content += f'<span style="margin-left:1rem;"><strong>🏢</strong> {forvaltning_forkortet}</span>'
+                flex_content += print_flex_item("🏢 Forvaltning", forvaltning_forkortet) # f'<span style="margin-left:1rem;"><strong>🏢</strong> {forvaltning_forkortet}</span>'
             if row["Teknologi"]:
-                flex_content += f'<span><strong>⚙️</strong> {row["Teknologi"]}</span>'
+                flex_content += print_flex_item("⚙️ Teknologi", row["Teknologi"]) # f'<span><strong>⚙️</strong> {row["Teknologi"]}</span>'
             if row["Fase"]:
                 fase_icon = get_fase_icon(row["Fase"])
                 mapped_fase = map_projekt_fase(row["Fase"])
-                flex_content += f'<span><strong>{fase_icon}</strong> {mapped_fase or row["Fase"]}</span>'
+                flex_content += print_flex_item(fase_icon + " Fase", mapped_fase or row["Fase"])
 
             with st.expander(f"**{row['Title']}**"):
                 st.markdown(
                     f"""
-                    <div style="background-color:#f8f4ed; padding:1rem; border-radius:10px; margin-bottom:1rem; border: 1px solid #9E9E9E; border-left: 5px solid #9E9E9E;">
-                        <p style="margin-top:0.5rem;">{row['Uddybning'] or 'Ikke angivet'}</p>
-                        <hr>
-                        <div style="display:flex; justify-content:space-between;">
-                            {flex_content}
-                        </div>
+                    <p>{row['Uddybning'] or 'Ikke angivet'}</p>
+                    <hr style="margin-top: 0.5rem; margin-bottom: 1rem;">
+                    <div style="display:flex; justify-content:space-between;margin-bottom: 1.5rem">
+                        {flex_content}
                     </div>
                     """,
                     unsafe_allow_html=True
