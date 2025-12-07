@@ -10,17 +10,6 @@ db_client = get_sharepoint_db()
 
 def get_ai_projects_overview():
     st.markdown(get_custom_css(), unsafe_allow_html=True)
-    col_1 = st.columns([1])[0]
-
-    # with col_1:
-    #     content_tabs = sac.tabs([
-    #         sac.TabsItem('Projektoversigt', tag='AI-projekter i Randers Kommune', icon='bi bi-robot'),
-    #     ], color='dark', size='md', position='top', align='start', use_container_width=True)
-
-    st.markdown(
-        f"""<div class='overlay-header'></div>""",
-        unsafe_allow_html=True
-    )
     st.markdown(
         f"""<div class='overlay-header-title'>AI Projektoverblik</div>""",
         unsafe_allow_html=True
@@ -66,7 +55,6 @@ def get_ai_projects_overview():
         data = st.session_state.sharepoint_data
         data = filter_by_allowed_teknologi(data)
 
-        # if content_tabs == 'Projektoversigt':
         with st.sidebar:
             st.markdown("### 🔎 Filtrer projekter")
 

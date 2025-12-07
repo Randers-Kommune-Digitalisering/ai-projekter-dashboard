@@ -12,23 +12,14 @@ def get_custom_css():
             .stApp, .stAppHeader, .stMainBlockContainer, .stBottom > div {
                 background-color: #FFFEFA;
             }
+            section:has(.stMainBlockContainer) {
+                scrollbar-gutter: stable;
+            }
 
             /* Topbar custom styles */
             .stAppToolbar {
                 background-color: #FCFAF4;
                 border-bottom: 1px solid #e0ded3;
-            }
-            [data-testid="stElementContainer"]:has(.overlay-header) {
-                position: fixed;
-                top: 0;
-                left: 0;
-                height: 3.75rem;
-                width: 100vw;
-                z-index: 999991;
-                pointer-events: none;
-            }
-            [data-testid="stElementContainer"]:has(.overlay-header) * {
-                max-height: 3.75rem;
             }
             [data-testid="stElementContainer"]:has(.css-injector) + div[data-testid="stLayoutWrapper"] {
                 display: none;
