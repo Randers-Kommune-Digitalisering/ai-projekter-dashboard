@@ -126,7 +126,7 @@ def get_ai_projects_overview():
         ).drop(columns=["starts_with_letter"])
 
         st.markdown(
-            f"<div class='tag' style='margin-bottom: 2rem'>🔎 {len(filtered_data)} projekter fundet</div>",
+            f"<div class='tag' style='margin-bottom: 2rem'>🔎 <b>{len(filtered_data)}</b> projekter fundet</div>",
             unsafe_allow_html=True
         )
 
