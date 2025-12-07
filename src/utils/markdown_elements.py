@@ -12,8 +12,11 @@ def get_custom_css():
             .stApp, .stAppHeader, .stMainBlockContainer, .stBottom > div {
                 background-color: #FFFEFA;
             }
+
+            /* Topbar custom styles */
             .stAppToolbar {
-                background-color: #fefdf1;
+                background-color: #FCFAF4;
+                border-bottom: 1px solid #e0ded3;
             }
             [data-testid="stElementContainer"]:has(.overlay-header) {
                 position: fixed;
@@ -22,7 +25,6 @@ def get_custom_css():
                 height: 3.75rem;
                 width: 100vw;
                 z-index: 999991;
-                border-bottom: 1px solid #e0ded3;
                 pointer-events: none;
             }
             [data-testid="stElementContainer"]:has(.overlay-header) * {
@@ -40,10 +42,12 @@ def get_custom_css():
                 pointer-events: none;
                 font-weight: 600;
             }
+
+            /* Sidebar custom styles */
             .stSidebar {
                 z-index: 999992;
                 border-right: 1px solid #e0ded3;
-                background-color: #f0ede0;
+                background-color: #f5f3eb;
             }
             section[data-testid="stSidebar"][aria-expanded="true"] {
                 min-width: 15rem;
@@ -51,20 +55,20 @@ def get_custom_css():
             .stSidebar .stHeading h1 {
                 padding-top: 0;
             }
-            div[data-baseweb="select"] > div, div[data-baseweb="input"] {
+
+            /* Input and select custom styles */
+            div[data-baseweb="select"] > div, div[data-baseweb="input"],
+            div[data-testid="stTextInputRootElement"] > div[data-baseweb="base-input"] {
                 border: 0;
+                outline: 1px solid #e0ded3;
+                background-color: #FFFEFA;
             }
-            /* div.stTextInput:has(div[data-testid="InputInstructions"]) div[data-baseweb="input"] {
-                border: 1px green;
-            } */
-
-
-            /* section.stSidebar[aria-expanded="true"] ~ div .appToolbarOverlay {
-                left: 19rem;
-                width: calc(100% - 19rem);
-            } */
-
+            div[data-baseweb="select"]:has(input:focus) > div, div[data-baseweb="input"]:has(input:focus)
+            {
+                outline: 1px solid #b3c4a1;
+            }
             
+            /* Expander custom styles (project list) */
             div[data-testid="stLayoutWrapper"] > .stExpander > details {
                 background-color: #b3c4a1;
                 border: 0;
@@ -84,14 +88,15 @@ def get_custom_css():
                 background-color: #c2d0b3;
             }
 
-
+            /* Custom element styles */
             .tag {
-                background-color: #f0ede0;
+                background-color: #f5f3eb;
                 border-radius: 0.5rem;
                 padding: 0.8rem 1.2rem;
                 font-size: 0.95rem;
                 width: fit-content;
                 display: inline-block;
+                outline: 1px solid #e0ded3;
             }
             .projects-flex-item {
                 display: inline-block;
@@ -109,18 +114,52 @@ def get_custom_css():
             }
 
 
-
-
             @media (prefers-color-scheme: dark) {
+                p {
+                    color: #e8e8e8;
+                }
                 .stAppToolbar {
                     background-color: #27292b;
+                    border-bottom: 1px solid #3d3e40;
                 }
                 .stApp, .stAppHeader, .stMainBlockContainer, .stBottom > div{
                     background-color: #222326;
                 }
-
+                .stSidebar {
+                    border-right: 1px solid #363739;
+                    background-color: #252629;
+                }
+                div[data-baseweb="select"] > div, div[data-baseweb="input"],
+                div[data-testid="stTextInputRootElement"] > div[data-baseweb="base-input"] {
+                    background-color: #4d5156;
+                    outline: 1px solid #787878;
+                }
+                div[data-baseweb="select"]:has(input:focus) > div, div[data-baseweb="input"]:has(input:focus)
+                {
+                    outline: 1px solid #b3c4a1;
+                }
+                div[data-testid="stLayoutWrapper"] > .stExpander > details {
+                    background-color: #565e4c;
+                }
+                div[data-testid="stLayoutWrapper"] > .stExpander > details > summary {
+                    color: #f2f2f2;
+                }
+                div[data-testid="stLayoutWrapper"] > .stExpander > details[open] {
+                    background-color: #27292b;
+                    outline: 1px solid #646e58;
+                }
+                div[data-testid="stLayoutWrapper"] > .stExpander > details[open] > summary {
+                    background-color: #646e58;
+                }
+                div[data-testid="stLayoutWrapper"]:hover > .stExpander > details > summary {
+                    background-color: #646e58;
+                }
                 .tag {
-                    background: #27292b;
+                    background: #252629;
+                    outline: 1px solid #3d3e40;
+                }
+                .projects-flex-item > div:first-child {
+                    color: #878787;
                 }
             }
         </style>
