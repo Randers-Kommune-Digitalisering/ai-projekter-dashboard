@@ -1,8 +1,9 @@
 def get_custom_css():
     return """
+        <span class="css-injector"></span>
         <style>
             .stMain {
-                margin-top: 3.5rem;
+                margin-top: 3.75rem;
                 height: calc(100dvh - .5rem);
             }
             .stMainBlockContainer {
@@ -27,6 +28,18 @@ def get_custom_css():
             [data-testid="stElementContainer"]:has(.overlay-header) * {
                 max-height: 3.75rem;
             }
+            [data-testid="stElementContainer"]:has(.css-injector) + div[data-testid="stLayoutWrapper"] {
+                display: none;
+            }
+            [data-testid="stElementContainer"]:has(.overlay-header-title) {
+                order: 999;
+                position: absolute;
+                display: flex;
+                top: 1.2rem;
+                z-index: 9999993;
+                pointer-events: none;
+                font-weight: 600;
+            }
             .stSidebar {
                 z-index: 999992;
                 border-right: 1px solid #e0ded3;
@@ -38,6 +51,12 @@ def get_custom_css():
             .stSidebar .stHeading h1 {
                 padding-top: 0;
             }
+            div[data-baseweb="select"] > div, div[data-baseweb="input"] {
+                border: 0;
+            }
+            /* div.stTextInput:has(div[data-testid="InputInstructions"]) div[data-baseweb="input"] {
+                border: 1px green;
+            } */
 
 
             /* section.stSidebar[aria-expanded="true"] ~ div .appToolbarOverlay {
@@ -53,6 +72,7 @@ def get_custom_css():
             div[data-testid="stLayoutWrapper"] > .stExpander > details[open] {
                 background-color: #FCFAF4;
                 outline: 1px solid #c2d0b3;
+                outline-offset: -1px;
             }
             div[data-testid="stLayoutWrapper"] > .stExpander > details[open] > summary {
                 background-color: #c2d0b3;
@@ -75,6 +95,7 @@ def get_custom_css():
             }
             .projects-flex-item {
                 display: inline-block;
+                min-width: 20%;
             }
             .projects-flex-item > div:first-child {
                 font-size: 0.8em;

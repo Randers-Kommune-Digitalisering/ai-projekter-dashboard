@@ -21,6 +21,10 @@ def get_ai_projects_overview():
         f"""<div class='overlay-header'></div>""",
         unsafe_allow_html=True
     )
+    st.markdown(
+        f"""<div class='overlay-header-title'>AI Projektoverblik</div>""",
+        unsafe_allow_html=True
+    )
 
     try:
         if 'sharepoint_data' not in st.session_state:
@@ -63,7 +67,6 @@ def get_ai_projects_overview():
         data = filter_by_allowed_teknologi(data)
 
         # if content_tabs == 'Projektoversigt':
-        st.sidebar.title("AI Projektoverblik")
         with st.sidebar:
             st.markdown("### 🔎 Filtrer projekter")
 
@@ -165,7 +168,7 @@ def get_ai_projects_overview():
             with st.expander(f"**{row['Title']}**"):
                 st.markdown(
                     f"""
-                    <p>{row['Uddybning'] or 'Ikke angivet'}</p>
+                    <p>{row['Uddybning'] or 'Ingen beskrivelse'}</p>
                     <hr style="margin-top: 0.5rem; margin-bottom: 1rem;">
                     <div style="display:flex; justify-content:space-between;margin-bottom: 1.5rem">
                         {flex_content}
