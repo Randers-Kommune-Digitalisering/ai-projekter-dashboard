@@ -1,5 +1,4 @@
 import streamlit as st
-import streamlit_antd_components as sac
 import pandas as pd
 from utils.database_connection import get_sharepoint_db
 from utils.util import filter_forvaltning_options, get_fase_icon, starts_with_letter, map_projekt_fase, map_forvaltning_forkortelse, filter_by_allowed_teknologi
@@ -11,7 +10,7 @@ db_client = get_sharepoint_db()
 def get_ai_projects_overview():
     st.markdown(get_custom_css(), unsafe_allow_html=True)
     st.markdown(
-        f"""<div class='overlay-header-title'>AI Projektoverblik</div>""",
+        "<div class='overlay-header-title'>AI Projektoverblik</div>",
         unsafe_allow_html=True
     )
 
@@ -145,9 +144,9 @@ def get_ai_projects_overview():
             flex_content = print_flex_item("👤 Kontaktperson", kontakt_html)
             if row["Forvaltning"]:
                 forvaltning_forkortet = map_forvaltning_forkortelse(row["Forvaltning"])
-                flex_content += print_flex_item("🏢 Forvaltning", forvaltning_forkortet) # f'<span style="margin-left:1rem;"><strong>🏢</strong> {forvaltning_forkortet}</span>'
+                flex_content += print_flex_item("🏢 Forvaltning", forvaltning_forkortet)
             if row["Teknologi"]:
-                flex_content += print_flex_item("⚙️ Teknologi", row["Teknologi"]) # f'<span><strong>⚙️</strong> {row["Teknologi"]}</span>'
+                flex_content += print_flex_item("⚙️ Teknologi", row["Teknologi"])
             if row["Fase"]:
                 fase_icon = get_fase_icon(row["Fase"])
                 mapped_fase = map_projekt_fase(row["Fase"])
